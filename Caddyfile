@@ -1,4 +1,4 @@
-Justforjan.eu {
-	root /usr/share/caddy
+justforjan.eu {
+	root * /usr/share/caddy
 	file_server
 }
