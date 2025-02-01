@@ -1,7 +1,5 @@
 version: '3'
 
-name: MyHomePage
-
 services:
   caddy:
     container_name: caddy
