@@ -1,15 +1,12 @@
 services:
   caddy:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/justforjan/my-home-page
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - caddy-config:/config
       - caddy-data:/data
-
 
 volumes:
   caddy-config:
