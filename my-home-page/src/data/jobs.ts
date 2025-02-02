@@ -6,6 +6,7 @@ const job1: Job = {
     at: 'Codecentric AG',
     description: 'I worked as a Software Engineer at Codecentric as part of the Dashboard team. I worked in the front end, backend and infratructure',
     skills: ['React', 'Scala', 'Docker', 'Typescript'],
+    link: 'https://www.codecentric.de/',
 }
 
 const job2: Job = {

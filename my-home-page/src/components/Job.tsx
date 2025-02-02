@@ -12,7 +12,7 @@ function Job({job}: { job: JobType }) {
                     <h3 className="font-bold">{job.title}</h3>
                     <p>{job.to ? `${formatDateToYearMonth(job.from)} - ${formatDateToYearMonth(job.to)}` : `${formatDateToYearMonth(job.from)} - Today`}</p>
                 </div>
-                <p className="mb-1">@ {job.at}</p>
+                <p className="mb-1">{job.link ? <a href={job.link}>@ {job.at}</a> : `@ ${job.at}`}</p>
                 <p className="text-justify mb-1">{job.description ?? job.description}</p>
                 <div className="flex flex-wrap my-2">
                     { job.skills!.map(skill => <div className="skill">{skill}</div>)}

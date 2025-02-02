@@ -11,6 +11,7 @@ export interface Project {
     links: Link[],
     image?: string,
     date?: Date,
+    tools?: string[],
 }
 
 export interface Social {

@@ -15,7 +15,7 @@ export default function AboutMe() {
     return(
         <>
             <div className="text-center p-2">
-                <p className="">I am a {calculateAge(new Date('1999-04-10'))} year old computer science student at the <a className="text-indigo-600"
+                <p className="">I am a {calculateAge(new Date('1999-04-10'))} year old computer science student at the <a
                                                                                   href="https://hpi.de/">Hasso Plattner Institut</a> in
                     Potsdam. Connect with me via these links:</p>
             </div>

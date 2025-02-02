@@ -6,6 +6,9 @@
     p {
         @apply text-gray-500 text-lg;
     }
+    a {
+        @apply text-indigo-600
+    }
 }
 
 @layer components {

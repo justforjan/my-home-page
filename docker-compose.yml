@@ -1,18 +1,14 @@
-version: '3'
-
 services:
   caddy:
-    container_name: caddy
-    image: caddy
-    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '80:80'
-      - '443:443'
+      - "8080:8080"
     volumes:
       - caddy-config:/config
       - caddy-data:/data
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./index.html:/usr/share/caddy/index.html
+
 
 volumes:
   caddy-config:
