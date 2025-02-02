@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.GITHUB_REGISTRY }}/justforjan/my-home-page:latest
+          images: ${{ env.GITHUB_REGISTRY }}/justforjan/my-home-page
           tags: latest
 
       - name: build and push docker image
