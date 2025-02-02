@@ -4,7 +4,7 @@ import { Project as ProjectType } from "../models/models.ts";
 
 function Project({ project }: { project: ProjectType }) {
 
-
+    const lengt_of_description: number = 60;
 
     return (
     <div className="shadow-lg border rounded-lg overflow-hidden hover:shadow">
@@ -13,7 +13,7 @@ function Project({ project }: { project: ProjectType }) {
         </div>
         <div className="p-3">
             <h2 className="text-2xl font-semibold">{project.title}</h2>
-            <p className="mt-2">{project.description}</p>
+            <p className="mt-2">{project.description.substring(0, lengt_of_description)}{project.description.length > lengt_of_description ? '...' : ''}</p>
             <div className="flex mt-4">
                 {project.links.map((link) => (
                     <a className="bg-indigo-400 px-2 py-1 rounded text-white ml-1 " target="_blank" rel="noopener noreferrer" href={link.url}>{link.name}</a>

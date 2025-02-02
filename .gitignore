@@ -4,10 +4,15 @@ logs
 **/*.backup.*
 **/*.back.*
 
+tsconfig.node*
+tsconfig.app*
+
 node_modules
 bower_components
 
 dist
+
+.idea
 
 *.sublime*
 
