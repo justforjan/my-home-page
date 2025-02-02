@@ -10,6 +10,7 @@ const personal_website: Project = {
         url: "https://github.com/justforjan/my-home-page"
     },],
     image: homepage_screenshot,
+    tools: ['ReactJS', 'Docker', 'Github Actions'],
 }
 
 const squeak: Project = {
@@ -20,6 +21,7 @@ const squeak: Project = {
         url: "https://github.com/hpi-swa-teaching/swa24-25-group17"
     }],
     image: squeak_td,
+    tools: ['Squak/Smalltalk']
 }
 
 const project3: Project = {

@@ -17,8 +17,6 @@ export default function App() {
               <LifeStations title="My Education" life_stations={educations.sort((a, b) => b.from.valueOf() - a.from.valueOf())}/>
               <Projects/>
 
-
-
           </div>
       </div>
 

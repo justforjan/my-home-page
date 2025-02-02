@@ -1,6 +1,6 @@
 import {Job} from "../models/models.ts";
 
-const job1: Job = {
+const codecentric: Job = {
     title: 'Working Student Software Development',
     from: new Date('2024-12-01'),
     at: 'Codecentric AG',
@@ -9,7 +9,7 @@ const job1: Job = {
     link: 'https://www.codecentric.de/',
 }
 
-const job2: Job = {
+const bikeclub: Job = {
     title: 'Entrepreneur in Residence',
     from: new Date('2023-01-14'),
     to: new Date('2024-01-10'),
@@ -18,7 +18,18 @@ const job2: Job = {
     skills: ['Process Management','Customer Operations', 'Salesforce', 'Automation', 'Notion', 'Entrepreneursip'],
 }
 
+const stocard: Job = {
+    title: 'Business Development Intern',
+    from: new Date('2021-08-01'),
+    to: new Date('2022-02-14'),
+    at: 'Stocard GmbH',
+    description: 'I supporeted Sales and Business Development with Analyses.',
+    skills: ['Salesforce', 'Data Analytics'],
+    link: 'https://stocardapp.com/'
+}
+
 export const jobs: Job[] = [
-    job1,
-    job2,
+    codecentric,
+    bikeclub,
+    stocard,
 ]
