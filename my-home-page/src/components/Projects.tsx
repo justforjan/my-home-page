@@ -1,7 +1,21 @@
-import {projects} from "../data/projects.ts";
 import Project from "./Project.tsx";
+import { useEffect, useState } from "react";
+import { Project as ProjectType } from "./models/models.ts"
+import { getAllProjects } from "../services/BackendConnector.ts";
 
 export default function Projects() {
+
+    const [projects, setProjects] = useState<ProjectType[]>([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const projects = await getAllProjects();
+            setProjects(projects);
+        }
+        fetchData();
+        }
+    )
+
     return(
         <>
             <h2 className="text-3xl font-bold my-8">My Projects</h2>
