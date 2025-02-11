@@ -6,6 +6,7 @@ export interface Link {
 }
 
 export interface Project {
+    id: number,
     title: string,
     description: string,
     links: Link[],
@@ -21,6 +22,7 @@ export interface Social {
 }
 
 export interface Job {
+    id: number,
     title: string,
     from: Date,
     to?: Date,

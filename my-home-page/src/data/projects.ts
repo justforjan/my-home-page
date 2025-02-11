@@ -3,6 +3,7 @@ import homepage_screenshot from "../assets/homepage_screenshot.png";
 import squeak_td from "../assets/squeak_td.png";
 
 const personal_website: Project = {
+    id: 1,
     title: "My personal Website",
     description: "The website you are looking at is my very first one",
     links: [{
@@ -14,6 +15,7 @@ const personal_website: Project = {
 }
 
 const squeak: Project = {
+    id: 2,
     title: "Tower Defense Game in Squeak/Smalltalk",
     description: 'We were tasked with creating a game in Squeak/Smalltalk in the University Module "Software Architecture"',
     links: [{
@@ -25,6 +27,7 @@ const squeak: Project = {
 }
 
 const project3: Project = {
+    id: 3,
     title: "My third project",
     description: "This is a small description of my third project",
     links: [{

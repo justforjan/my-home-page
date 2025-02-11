@@ -16,7 +16,7 @@ function Project({ project }: { project: ProjectType }) {
             <p className="mt-2">{project.description.substring(0, lengt_of_description)}{project.description.length > lengt_of_description ? '...' : ''}</p>
             <div className="flex mt-4">
                 {project.links.map((link) => (
-                    <a className="bg-indigo-400 px-2 py-1 rounded text-white ml-1 " target="_blank" rel="noopener noreferrer" href={link.url}>{link.name}</a>
+                    <a className="link-button" target="_blank" rel="noopener noreferrer" href={link.url}>{link.name}</a>
                 ))}
             </div>
         </div>

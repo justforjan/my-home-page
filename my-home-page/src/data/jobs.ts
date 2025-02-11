@@ -1,6 +1,7 @@
 import {Job} from "../models/models.ts";
 
 const codecentric: Job = {
+    id: 3,
     title: 'Working Student Software Development',
     from: new Date('2024-12-01'),
     at: 'Codecentric AG',
@@ -10,6 +11,7 @@ const codecentric: Job = {
 }
 
 const bikeclub: Job = {
+    id: 2,
     title: 'Entrepreneur in Residence',
     from: new Date('2023-01-14'),
     to: new Date('2024-01-10'),
@@ -19,6 +21,7 @@ const bikeclub: Job = {
 }
 
 const stocard: Job = {
+    id: 1,
     title: 'Business Development Intern',
     from: new Date('2021-08-01'),
     to: new Date('2022-02-14'),
