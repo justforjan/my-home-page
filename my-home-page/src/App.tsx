@@ -6,11 +6,14 @@ import LifeStations from "./components/LifeStations.tsx";
 import AboutMe from "./components/AboutMe.tsx";
 import Header from "./components/Header.tsx";
 import { getAllJobs, getAllEducation } from "./services/BackendConnector.ts"
+import {DarkModeProvider} from "./components/DarkmodeProvider.tsx";
+import DarkModeButton from "./components/DarkModeButton.tsx";
 
 export default function App() {
 
     const [jobs, setJobs] = useState<LifeStationType[]>([]);
     const [education, setEducation] = useState<LifeStationType[]>([]);
+
 
     useEffect(() => {
         async function fetchData() {
@@ -23,18 +26,23 @@ export default function App() {
 
     }, []) // runs only once
 
+
     return (
-        <div className="p-5 pb-20">
-            <div className="container mx-auto max-w-2xl cursor-default">
+        <DarkModeProvider>
+            <div className="p-5 pb-20">
+                <div className="container mx-auto max-w-2xl cursor-default">
 
-                <Header/>
-                <AboutMe/>
-                <LifeStations title="My Jobs" life_stations={jobs}/>
-                <LifeStations title="My Education" life_stations={education}/>
-                <Projects/>
+                    <Header/>
+                    <AboutMe/>
+                    <LifeStations title="My Jobs" life_stations={jobs}/>
+                    <LifeStations title="My Education" life_stations={education}/>
+                    <Projects/>
 
+                </div>
+                <DarkModeButton/>
             </div>
-        </div>
+        </DarkModeProvider>
+
 
     )
 }
