@@ -1,6 +1,7 @@
 import {Job} from "../models/models.ts";
 
 const mannheim: Job = {
+    id: 1,
     title: 'B. Sc. Engineering and Management',
     at: 'Hochschule Mannheim',
     from: new Date('2018-09'),
@@ -10,6 +11,7 @@ const mannheim: Job = {
 }
 
 const hpi: Job = {
+    id: 1,
     title: 'B. Sc. IT-Systems Engineering',
     at: 'Hasso-Plattner-Institut',
     from: new Date('2023-10'),
