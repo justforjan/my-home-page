@@ -1,6 +1,6 @@
 import Project from "./Project.tsx";
 import { useEffect, useState } from "react";
-import { Project as ProjectType } from "./models/models.ts"
+import {Project as ProjectType} from "../models/models.ts";
 import { getAllProjects } from "../services/BackendConnector.ts";
 
 export default function Projects() {
