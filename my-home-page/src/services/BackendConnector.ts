@@ -17,7 +17,10 @@ export async function getAllProjects(): Promise<ProjectType[]> {
     return projects;
 }
 
-export async function getProject(id: number): Promise<ProjectType | undefined> {
+export async function getProject(id: number | string| undefined): Promise<ProjectType | undefined> {
+    if(typeof id === 'string') {
+        id = parseInt(id);
+    }
     return projects.find((project) => project.id == id);
 }
 

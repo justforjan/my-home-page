@@ -4,18 +4,21 @@
 
 @layer base {
     p {
-        @apply text-gray-500 text-lg;
+        @apply text-gray-500;
     }
     a {
-        @apply text-secondary
+        @apply text-secondary;
     }
 }
 
 @layer components {
     .skill {
-        @apply bg-gray-500 text-white rounded mb-2 mr-2 px-2 hover:bg-primary duration-150;
+        @apply bg-gray-400 text-white rounded mb-2 mr-2 px-2 hover:bg-primary duration-150;
     }
     .link-button {
         @apply bg-primary px-2 py-1 rounded text-white ml-1
+    }
+    .subtitle {
+        @apply text-3xl font-bold my-8
     }
 }

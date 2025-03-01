@@ -11,7 +11,7 @@ export interface Project {
     description: string,
     links: Link[],
     image?: string,
-    date?: Date,
+    date: Date,
     tools?: string[],
 }
 
