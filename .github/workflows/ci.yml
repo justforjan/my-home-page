@@ -76,7 +76,7 @@ jobs:
             cd ${{ secrets.WORK_DIR }}
             docker compose down
             docker compose pull
-            docker compose up -d --remove-orphans
+            docker compose up -d --profile prod --remove-orphans
             exit
           EOF
 

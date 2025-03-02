@@ -7,8 +7,25 @@ services:
     volumes:
       - caddy-config:/config
       - caddy-data:/data
+    profiles:
+      - prod
+
+  caddy-local:
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy-config-local:/config
+      - caddy-data-local:/data
+    profiles:
+      - local
 
 volumes:
   caddy-config:
   caddy-data:
+  caddy-config-local:
+  caddy-data-local:
 
