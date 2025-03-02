@@ -2,11 +2,11 @@ FROM node:latest AS frontend
 
 WORKDIR /frontend
 
-COPY ./my-home-page/package*.json ./
+COPY frontend/package*.json ./
 
 RUN npm install
 
-COPY ./my-home-page .
+COPY frontend .
 
 RUN npm run build
 
