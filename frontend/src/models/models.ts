@@ -24,8 +24,8 @@ export interface Social {
 export interface Job {
     id: number,
     title: string,
-    from: Date,
-    to?: Date,
+    start: Date,
+    end?: Date,
     at?: string,
     description?: string,
     skills?: string[],
