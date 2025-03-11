@@ -3,3 +3,7 @@ justforjan.eu {
 	file_server
 	try_files {path} /index.html
 }
+
+api.justforjan.eu {
+    reverse_proxy backend:8000
+}
