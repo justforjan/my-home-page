@@ -7,25 +7,35 @@ services:
     volumes:
       - caddy-config:/config
       - caddy-data:/data
-    profiles:
-      - prod
+    environment:
+      RUNNING_IN_DOCKER: True
 
-  caddy-local:
+  backend:
     build:
-      context: .
-      dockerfile: Dockerfile-local
+      context: ./backend/
+      dockerfile: Dockerfile
     ports:
-      - "80:80"
-      - "443:443"
+      - "8000:8000"
+    depends_on:
+      - database
+    env_file:
+      - backend/.env
+    environment:
+      RUNNING_IN_DOCKER: True
+
+
+  database:
+    image: postgres:alpine
     volumes:
-      - caddy-config-local:/config
-      - caddy-data-local:/data
-    profiles:
-      - local
+      - database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - backend/.env
+
 
 volumes:
   caddy-config:
   caddy-data:
-  caddy-config-local:
-  caddy-data-local:
+  database:
 

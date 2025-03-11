@@ -1,0 +1,34 @@
+services:
+  caddy:
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy-config-local:/config
+      - caddy-data-local:/data
+    environment:
+      DOMAIN_WEBSITE: localhost
+      DOMAIN_API: localhost:8000
+
+  backend:
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/app/
+          target: ./backend/app/
+        - action: sync
+          path: ./backend/main.py
+          target: ./backend/main.py
+        - action: rebuild
+          path: ./backend
+          ignore:
+            - ./backend/main.py
+            - ./backend/app/
+
+
+volumes:
+  caddy-config-local:
+  caddy-data-local:
