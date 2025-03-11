@@ -2,17 +2,18 @@ import os
 from contextlib import asynccontextmanager
 from typing import Annotated
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel, create_engine, Session, select
 
 from app.models import Job, Project
 
 from app.data import jobs, projects
 
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "postgres")
+DB_USER = os.getenv("POSTGRES_USER", "postgres")
+DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "5432")
-DB_NAME = os.getenv("DB_NAME", "mywebsite")
+DB_NAME = os.getenv("POSTGRES_DB", "mywebsite")
 
 DATABASE_URL = (
     f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
@@ -36,6 +37,7 @@ SessionDep = Annotated[Session, Depends(get_session)]
 
 def fill_empty_tables_with_dummy_data(session: Session):
     print('Filling empty tables with dummy data')
+
     if not session.exec(select(Project)).first():
         for project in projects:
             print(f'Adding project {project.title}')
@@ -60,6 +62,19 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+
+origins = [
+    "http://localhost",  # Allows requests from http://localhost (your frontend in development)
+    'justforjan.eu'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True, # Allows cookies to be sent in requests (if you need them)
+    allow_methods=["*"],     # Allows all HTTP methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],     # Allows all headers
+)
 
 
 @app.get("/jobs", response_model=list[Job])
