@@ -38,6 +38,7 @@ jobs:
         with:
           context: .
           push: true
+          build-args: prod
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
@@ -69,7 +70,6 @@ jobs:
         with:
           context: ./backend
           push: true
-          build-args: prod
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
