@@ -13,7 +13,7 @@ const personal_website: Project = {
         url: "https://github.com/justforjan/my-home-page"
     },],
     image: homepage_screenshot,
-    tools: ['ReactJS', 'Docker', 'Github Actions'],
+    tools: ['ReactJS', 'Docker', 'Github Actions', 'Tailwind'],
 }
 
 const squeak: Project = {

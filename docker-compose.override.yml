@@ -1,0 +1,39 @@
+services:
+  caddy:
+    image: !reset null
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DEPLOYMENT_TYPE: local # either local or prod. Must be set in GitHub Pipeline for so that the correct Caddyfile gets selected
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy-config-local:/config
+      - caddy-data-local:/data
+    environment:
+      DOMAIN_WEBSITE: localhost
+      DOMAIN_API: localhost:8000
+
+  backend:
+    environment:
+      RUNNING_LOCALLY: True
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/app/
+          target: ./backend/app/
+        - action: sync
+          path: ./backend/main.py
+          target: ./backend/main.py
+        - action: rebuild
+          path: ./backend
+          ignore:
+            - ./backend/main.py
+            - ./backend/app/
+
+
+volumes:
+  caddy-config-local:
+  caddy-data-local:

@@ -1,0 +1,11 @@
+### Get all jobs
+GET localhost:8000/jobs
+
+### Get job with id 1
+GET localhost:8000/jobs/1
+
+### Get all projects
+GET localhost:8000/projects
+
+### Get project with id 1
+GET localhost:8000/projects/1

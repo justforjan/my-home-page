@@ -31,9 +31,10 @@ export default function ProjectPage() {
                 <h1 className="subtitle">{project.title}</h1>
                 <p className="mb-2">{formattedDate}</p>
                 {project.image ? <img alt={"This is a screenshot of my project " + project.title} src={project.image} /> : <></>}
-                <p>{project.description}</p>
+                <p className="mb-3">{project.description}</p>
                 {project.tools ?
                     <div>
+                        <hr className="border-indigo-50"/>
                         <h2 className="subtitle" >Tools and Technologies</h2>
                         <div className="flex flex-wrap my-2">
                             {project.tools.map((tool) => {
@@ -43,6 +44,7 @@ export default function ProjectPage() {
                     </div>
                  : <></>
                 }
+                <hr className="border-indigo-50 mb-3"/>
                 <h2 className="subtitle" >Relevant Links</h2>
                 <div className="flex mt-4">
                     {project.links.map((link) => (
