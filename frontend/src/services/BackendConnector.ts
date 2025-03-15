@@ -4,7 +4,7 @@ import {jobs} from "../data/jobs.ts";
 import {projects} from "../data/projects.ts";
 import {educations} from "../data/education.ts";
 
-const API_BASE_URL = "localhost:8000"
+const API_BASE_URL = "api.justforjan.eu"
 const JOBS = "jobs"
 // const PROJECTS = "projects"
 

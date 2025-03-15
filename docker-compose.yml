@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: ghcr.io/justforjan/my-home-page
+    image: ghcr.io/justforjan/my-home-page_frontend
     ports:
       - "80:80"
       - "443:443"
@@ -11,9 +11,7 @@ services:
       RUNNING_IN_DOCKER: True
 
   backend:
-    build:
-      context: ./backend/
-      dockerfile: Dockerfile
+    image: ghcr.io/justforjan/my-home-page_frontend_backend
     ports:
       - "8000:8000"
     depends_on:
