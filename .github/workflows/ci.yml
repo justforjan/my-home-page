@@ -14,8 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Call Common Checkout Workflow
-        uses: ./.github/workflows/common-checkout.yml
+      - name: Checkout the Repo
+        uses: actions/checkout@v4
+
+      - name: Log into Container Registry
+        uses: login-to-container-registry.yml
 
       - name: Extract Metadata
         id: meta
@@ -37,8 +40,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Call Common Checkout Workflow
-        uses: ./.github/workflows/common-checkout.yml
+      - name: Checkout the Repo
+        uses: actions/checkout@v4
+
+      - name: Log into Container Registry
+        uses: login-to-container-registry.yml
 
       - name: Extract Metadata
         id: meta
