@@ -109,12 +109,15 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             cd ${{ secrets.WORK_DIR }}
+            mkdir -p backend
+            cd backend
             file=".env"
             echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> $file
             echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> $file
             echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> $file
             echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> $file
             echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> $file
+            cd ..
             docker compose pull
             docker compose up -d --remove-orphans
             exit
