@@ -6,6 +6,7 @@ on:
 
 env:
   DOCKER_IMAGE: ${{ github.repository }}
+  GITHUB_REGISTRY: ghcr.io
 
 jobs:
 
@@ -18,7 +19,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Log into Container Registry
-        uses: login-to-container-registry.yml
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.GITHUB_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_ACCESS_TOKEN }}
+
 
       - name: Extract Metadata
         id: meta
@@ -35,6 +41,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+
   build-backend:
     name: Build and Publish Backend Image
     runs-on: ubuntu-latest
@@ -44,7 +51,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Log into Container Registry
-        uses: login-to-container-registry.yml
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.GITHUB_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_ACCESS_TOKEN }}
 
       - name: Extract Metadata
         id: meta
