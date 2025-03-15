@@ -1,7 +1,5 @@
 name: Build MyWebsite Frontend
 
-
-
 on:
   push:
     branches: [ "main" ]
@@ -35,9 +33,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   build-backend:
-    name: Build and Publish Frontend Image
+    name: Build and Publish Backend Image
     runs-on: ubuntu-latest
-      
+
+    steps:
       - name: Call Common Checkout Workflow
         uses: ./.github/workflows/common-checkout.yml
 
