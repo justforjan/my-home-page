@@ -4,10 +4,13 @@ from typing import Annotated
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel, create_engine, Session, select
+from dotenv import load_dotenv
 
 from app.models import Job, Project
 
 from app.data import jobs, projects
+
+load_dotenv()
 
 DB_USER = os.getenv("POSTGRES_USER", "postgres")
 DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
