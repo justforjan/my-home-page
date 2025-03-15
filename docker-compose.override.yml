@@ -17,6 +17,10 @@ services:
       DOMAIN_API: localhost:8000
 
   backend:
+    image: !reset null
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
     environment:
       RUNNING_LOCALLY: True
     develop:
