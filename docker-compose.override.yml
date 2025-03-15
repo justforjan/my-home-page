@@ -17,6 +17,8 @@ services:
       DOMAIN_API: localhost:8000
 
   backend:
+    environment:
+      RUNNING_LOCALLY: True
     develop:
       watch:
         - action: sync

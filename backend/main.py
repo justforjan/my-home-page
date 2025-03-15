@@ -14,9 +14,18 @@ load_dotenv()
 
 DB_USER = os.getenv("POSTGRES_USER", "postgres")
 DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
-DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_HOST = ''
 DB_PORT = os.getenv("DB_PORT", "5432")
 DB_NAME = os.getenv("POSTGRES_DB", "mywebsite")
+
+# Check if running inside Docker
+RUNNING_IN_DOCKER = os.getenv("RUNNING_IN_DOCKER", "False").lower() == "true"
+
+# Set DB_HOST dynamically
+if RUNNING_IN_DOCKER:
+    DB_HOST = os.getenv("DB_HOST")  # Use service name in Docker
+else:
+    DB_HOST = "localhost"  # Use localhost when running locally
 
 DATABASE_URL = (
     f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"

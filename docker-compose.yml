@@ -22,6 +22,7 @@ services:
       - backend/.env
     environment:
       RUNNING_IN_DOCKER: True
+      RUNNING_LOCALLY: False
 
 
   database:
