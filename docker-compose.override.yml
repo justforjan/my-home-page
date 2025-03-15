@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        DEPLOYMENT_TYPE: local # either local or prod. Must be set in GitHub Pipeline for so that the correct Caddyfile gets selected
+        DEPLOYMENT_TYPE: local # either local or prod. Must also be set in GitHub Pipeline so that the correct Caddyfile gets selected
     ports:
       - "80:80"
       - "443:443"
