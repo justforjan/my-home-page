@@ -11,7 +11,7 @@ services:
       RUNNING_IN_DOCKER: True
 
   backend:
-    image: ghcr.io/justforjan/my-home-page_frontend_backend
+    image: ghcr.io/justforjan/my-home-page_backend
     ports:
       - "8000:8000"
     depends_on:
