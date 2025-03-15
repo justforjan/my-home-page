@@ -13,6 +13,9 @@ RUN npm run build
 
 FROM caddy:latest
 
-COPY Caddyfile /etc/caddy/Caddyfile
+ARG DEPLOYMENT_TYPE
+
+RUN rm -f /etc/caddy/Caddyfile
+COPY ./Caddyfile.$DEPLOYMENT_TYPE /etc/caddy/Caddyfile
 
 COPY --from=frontend /frontend/dist /srv
