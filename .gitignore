@@ -4,8 +4,8 @@ logs
 **/*.backup.*
 **/*.back.*
 
-tsconfig.node*
-tsconfig.app*
+tsconfig.node.tsbuildinfo
+tsconfig.app.tsbuildinfo
 
 node_modules
 bower_components
