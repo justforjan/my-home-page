@@ -1,10 +1,9 @@
 import {Job as LifeStationType, Project as ProjectType} from "../models/models.ts"
 
-import {educations} from "../data/education.ts";
-
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 const JOBS = "jobs"
 const PROJECTS = "projects"
+const EDUCATION = "education"
 
 class ApiService {
     async getAllJobs(): Promise<LifeStationType[]> {
@@ -60,8 +59,15 @@ class ApiService {
     }
 
     async getAllEducation(): Promise<LifeStationType[]> {
-        console.log("fetching education");
-        return educations.sort((a, b) => b.start.valueOf() - a.start.valueOf());
+        try {
+            console.log("fetching projects");
+            const response = await fetch(`${API_BASE_URL}/${EDUCATION}`);
+            if (!response.ok) throw new Error("Failed to fetch jobs");
+            return (await response.json()) as LifeStationType[];
+        } catch (error) {
+            console.error("Error fetching jobs:", error);
+            return [];
+        }
     }
 }
 

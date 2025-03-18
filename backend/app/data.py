@@ -1,4 +1,4 @@
-from app.models import Link, JobCreate, ProjectCreate
+from app.models import Link, JobCreate, ProjectCreate, EducationCreate
 from datetime import date
 
 job1 = JobCreate(title='Title1', start=date.fromisoformat('2025-01-01'), end=date.fromisoformat('2025-03-10'), at='Codecentric', skills=['Docker'], link='www.link.de')
@@ -13,3 +13,9 @@ project2 = ProjectCreate(title='Project2', date=date.fromisoformat('2025-03-01')
 project3 = ProjectCreate(title='Project3', date=date.fromisoformat('2025-06-01'))
 
 projects = [project1, project2, project3]
+
+
+education1 = EducationCreate(title='B. Sc. Engineering and Management', at='Hochschule Mannheim', start=date.fromisoformat('2018-09-01'), end=date.fromisoformat('2023-03-31'), link='https://www.wing.hs-mannheim.de/studierende/aktuelleshtml/bachelor-studiengang-wbi.html')
+education2 = EducationCreate(title='B. Sc. IT-Systems Engineering', at='Hasso-Plattner-Institut', start=date.fromisoformat('2023-10-01'), link='https://hpi.de/studium/', skills=['C', 'C++', 'Python', 'Django'])
+
+education = [education1, education2]

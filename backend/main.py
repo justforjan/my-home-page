@@ -6,9 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel, create_engine, Session, select
 from dotenv import load_dotenv
 
-from app.models import Job, Project
+from app.models import Job, Project, Education
 
-from app.data import jobs, projects
+from app.data import jobs, projects, education
 
 load_dotenv()
 
@@ -64,6 +64,13 @@ def fill_empty_tables_with_dummy_data(session: Session):
             session.add(db_job)
         session.commit()
 
+    if not session.exec(select(Education)).first():
+        for edu in education:
+            print(f'Adding education {edu.title}')
+            db_edu = Education.model_validate(edu)
+            session.add(db_edu)
+        session.commit()
+
     print('Dummy data added to database')
 
 @asynccontextmanager
@@ -115,6 +122,10 @@ def get_project_by_id(project_id: int, session: SessionDep):
     if not project:
         raise HTTPException(status_code=404, detail=f'Project with the ID {project_id} does not exists')
     return project
+
+@app.get('/education', response_model=list[Education])
+def get_all_education(session: SessionDep):
+    return session.exec(select(Education))
 
 
 
