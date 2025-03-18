@@ -24,7 +24,7 @@ export default function ProjectPage() {
 
 
     if(project) {
-        const formattedDate =  new Date(project.date).toLocaleDateString(undefined, dateOptions);
+        const formattedDate =  project.date.toLocaleDateString(undefined, dateOptions);
         return (
             <>
                 <h1 className="subtitle">{project.title}</h1>

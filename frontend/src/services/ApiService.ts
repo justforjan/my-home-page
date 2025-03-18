@@ -1,4 +1,5 @@
 import {Job as LifeStationType, Project as ProjectType} from "../models/models.ts"
+import {toEducations, toJob, toJobs, toProject, toProjects} from "../models/conversion.ts";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 const JOBS = "jobs"
@@ -11,7 +12,7 @@ class ApiService {
             console.log("fetching jobs");
             const response = await fetch(`${API_BASE_URL}/${JOBS}`);
             if (!response.ok) throw new Error("Failed to fetch jobs");
-            return (await response.json()) as LifeStationType[];
+            return toJobs(await response.json());
         } catch (error) {
             console.error("Error fetching jobs:", error);
             return [];
@@ -23,7 +24,7 @@ class ApiService {
             console.log(`fetching job ${id}`);
             const response = await fetch(`${API_BASE_URL}/${JOBS}/${id}`);
             if (!response.ok) throw new Error("Failed to fetch jobs");
-            return (await response.json()) as LifeStationType;
+            return toJob(await response.json());
         } catch (error) {
             console.error("Error fetching jobs:", error);
         }
@@ -35,7 +36,7 @@ class ApiService {
             console.log("fetching projects");
             const response = await fetch(`${API_BASE_URL}/${PROJECTS}`);
             if (!response.ok) throw new Error("Failed to fetch jobs");
-            return (await response.json()) as ProjectType[];
+            return toProjects(await response.json());
         } catch (error) {
             console.error("Error fetching jobs:", error);
             return [];
@@ -52,7 +53,7 @@ class ApiService {
             if (!response.ok) throw new Error("Failed to fetch jobs");
             const data = await response.json();
             console.log(`fetched project : ${data}`)
-            return data as ProjectType;
+            return toProject(data);
         } catch (error) {
             console.error("Error fetching jobs:", error);
         }
@@ -63,7 +64,7 @@ class ApiService {
             console.log("fetching projects");
             const response = await fetch(`${API_BASE_URL}/${EDUCATION}`);
             if (!response.ok) throw new Error("Failed to fetch jobs");
-            return (await response.json()) as LifeStationType[];
+            return toEducations(await response.json());
         } catch (error) {
             console.error("Error fetching jobs:", error);
             return [];
