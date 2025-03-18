@@ -6,9 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import SQLModel, create_engine, Session, select
 from dotenv import load_dotenv
 
-from app.models import Job, Project
-
-from app.data import jobs, projects
+from app.models import Job, Project, Education
+from app.data import jobs, projects, education
 
 load_dotenv()
 
@@ -25,11 +24,10 @@ RUNNING_IN_DOCKER = os.getenv("RUNNING_IN_DOCKER", "False").lower() == "true"
 if RUNNING_IN_DOCKER:
     DB_HOST = os.getenv("POSTGRES_HOST")  # Use service name in Docker
 else:
-    DB_HOST = "localhost"  # Use localhost when running locally
+    DB_HOST = "localhost"  # Use localhost when running outside of Docker and locally
 
-DATABASE_URL = (
-    f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-)
+DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
 
 engine = create_engine(DATABASE_URL, echo=True)
 
@@ -64,6 +62,13 @@ def fill_empty_tables_with_dummy_data(session: Session):
             session.add(db_job)
         session.commit()
 
+    if not session.exec(select(Education)).first():
+        for edu in education:
+            print(f'Adding education {edu.title}')
+            db_edu = Education.model_validate(edu)
+            session.add(db_edu)
+        session.commit()
+
     print('Dummy data added to database')
 
 @asynccontextmanager
@@ -76,7 +81,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 origins = [
-    "http://localhost",  # Allows requests from http://localhost (your frontend in development)
+    "http://localhost",  # Allows requests http://localhost
+    "http://localhost:8080", # Allow request  from port 8080 as this is the port when running outside of Docker
     'justforjan.eu'
 ]
 
@@ -114,6 +120,10 @@ def get_project_by_id(project_id: int, session: SessionDep):
     if not project:
         raise HTTPException(status_code=404, detail=f'Project with the ID {project_id} does not exists')
     return project
+
+@app.get('/education', response_model=list[Education])
+def get_all_education(session: SessionDep):
+    return session.exec(select(Education))
 
 
 

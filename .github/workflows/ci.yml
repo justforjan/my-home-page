@@ -1,4 +1,4 @@
-name: Build MyWebsite Frontend
+name: Build and Deploy MyWebsite
 
 on:
   push:

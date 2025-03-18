@@ -1,7 +1,7 @@
 import Project from "./Project.tsx";
 import { useEffect, useState } from "react";
 import {Project as ProjectType} from "../models/models.ts";
-import { getAllProjects } from "../services/BackendConnector.ts";
+import api from "../services/ApiService.ts";
 
 export default function Projects() {
 
@@ -9,11 +9,11 @@ export default function Projects() {
 
     useEffect(() => {
         async function fetchData() {
-            const projects = await getAllProjects();
+            const projects = await api.getAllProjects();
             setProjects(projects);
         }
         fetchData();
-        }
+        }, []
     )
 
     return(
