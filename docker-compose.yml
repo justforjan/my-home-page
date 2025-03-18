@@ -33,9 +33,22 @@ services:
     env_file:
       - backend/.env
 
+  minio:
+    image: quay.io/minio/minio:latest
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    env_file:
+      - backend/.env
+    command: server /data --console-address ":9001"
+
+
 
 volumes:
   caddy-config:
   caddy-data:
   database:
+  minio_data:
 
