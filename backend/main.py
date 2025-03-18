@@ -77,6 +77,7 @@ app = FastAPI(lifespan=lifespan)
 
 origins = [
     "http://localhost",  # Allows requests from http://localhost (your frontend in development)
+    "http://localhost:8080",
     'justforjan.eu'
 ]
 
