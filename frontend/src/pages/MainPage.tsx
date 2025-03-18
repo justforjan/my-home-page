@@ -27,7 +27,6 @@ export default function MainPage() {
 
                 <Header/>
                 <AboutMe/>
-                <p>{import.meta.env.VITE_API_BASE_URL}</p>
                 <LifeStations title="My Jobs" life_stations={jobs}/>
                 <LifeStations title="My Education" life_stations={education}/>
                 <Projects/>
