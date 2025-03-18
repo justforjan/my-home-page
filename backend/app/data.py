@@ -22,13 +22,13 @@ squeak = ProjectCreate(
 cs50finalproject = ProjectCreate(
     title='CS50 Final Project',
     date=date.fromisoformat('2021-01-01'),
-    descriptio='This is my capstone project of CS50. CS50 is a course developes by David Malan and hist team at Harvard and Yale. The course material is freely available online and covers basics of Computer Science. We learned the principles of programming in C, Python and SQL, Datastructures and Algorithms and Web Development. As a final project I developed an Expense Tracker with Flask. I currently is not deployed but I am thinking about deploying it in the near future for demonstration purposes.',
+    description='This is my capstone project of CS50. CS50 is a course developes by David Malan and hist team at Harvard and Yale. The course material is freely available online and covers basics of Computer Science. We learned the principles of programming in C, Python and SQL, Datastructures and Algorithms and Web Development. As a final project I developed an Expense Tracker with Flask. I currently is not deployed but I am thinking about deploying it in the near future for demonstration purposes.',
     links=[Link(name='Youtube', url='https://youtu.be/aA5bLuLiqWE?si=ckbiVcr8N4LS3vTG').model_dump(), Link(name='Github', url='https://github.com/justforjan/FinanceTracker').model_dump()],
     tools=['Flask', 'Python', 'Jinja', 'HMTL', 'Bootstrap'])
 ttt = ProjectCreate(
     title='TicTacToe',
     date=date.fromisoformat('2024-06-01'),
-    descriptio='As part of the lecture "Distributed Systems" we were tasked with developing a small distributed System. We decided to build a TicTacToe web application based on cookies. The app is currently not deployed but I would love to deploy in the in the future.',
+    description='As part of the lecture "Distributed Systems" we were tasked with developing a small distributed System. We decided to build a TicTacToe web application based on cookies. The app is currently not deployed but I would love to deploy in the in the future.',
     links=[Link(name='Gitlab', url='123').model_dump()],
     tools=['Django', 'Python', 'PostgreSQL', 'Docker'])
 
