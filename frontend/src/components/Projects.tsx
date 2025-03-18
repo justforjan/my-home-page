@@ -18,7 +18,7 @@ export default function Projects() {
 
     return(
         <>
-            <h2 className="subtitle">Projects</h2>
+            <h2 className="subtitle">💻 Projects</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 {projects.map((project) => (

@@ -27,8 +27,8 @@ export default function MainPage() {
 
                 <Header/>
                 <AboutMe/>
-                <LifeStations title="Jobs" life_stations={jobs}/>
-                <LifeStations title="Education" life_stations={education}/>
+                <LifeStations title="🏢 Jobs" life_stations={jobs}/>
+                <LifeStations title="🎓 Education" life_stations={education}/>
                 <Projects/>
 
             </div>
