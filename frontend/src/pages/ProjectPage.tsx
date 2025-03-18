@@ -1,7 +1,7 @@
 import {useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {Project as ProjectType} from "../models/models.ts";
-import {getProject} from "../services/BackendConnector.ts";
+import api from "../services/ApiService.ts";
 
 export default function ProjectPage() {
 
@@ -11,7 +11,7 @@ export default function ProjectPage() {
 
     useEffect(() => {
         async function fetchProject() {
-            const p = await getProject(pid);
+            const p = await api.getProject(pid);
             setProject(p);
         }
         fetchProject();
@@ -23,9 +23,8 @@ export default function ProjectPage() {
     }
 
 
-
     if(project) {
-        const formattedDate = project.date.toLocaleDateString(undefined, dateOptions);
+        const formattedDate =  project.date.toLocaleDateString(undefined, dateOptions);
         return (
             <>
                 <h1 className="subtitle">{project.title}</h1>

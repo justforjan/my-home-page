@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {Job as LifeStationType} from "../models/models.ts";
-import {getAllEducation, getAllJobs} from "../services/BackendConnector.ts";
+import api from "../services/ApiService.ts";
 import Header from "../components/Header.tsx";
 import AboutMe from "../components/AboutMe.tsx";
 import LifeStations from "../components/LifeStations.tsx";
@@ -12,8 +12,8 @@ export default function MainPage() {
 
     useEffect(() => {
         async function fetchData() {
-            const jobs = await getAllJobs();
-            const education = await getAllEducation();
+            const jobs = await api.getAllJobs();
+            const education = await api.getAllEducation();
             setJobs(jobs);
             setEducation(education);
         }
