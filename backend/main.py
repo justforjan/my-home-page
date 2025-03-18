@@ -7,7 +7,6 @@ from sqlmodel import SQLModel, create_engine, Session, select
 from dotenv import load_dotenv
 
 from app.models import Job, Project, Education
-
 from app.data import jobs, projects, education
 
 load_dotenv()
@@ -25,11 +24,10 @@ RUNNING_IN_DOCKER = os.getenv("RUNNING_IN_DOCKER", "False").lower() == "true"
 if RUNNING_IN_DOCKER:
     DB_HOST = os.getenv("POSTGRES_HOST")  # Use service name in Docker
 else:
-    DB_HOST = "localhost"  # Use localhost when running locally
+    DB_HOST = "localhost"  # Use localhost when running outside of Docker and locally
 
-DATABASE_URL = (
-    f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-)
+DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
 
 engine = create_engine(DATABASE_URL, echo=True)
 
@@ -83,8 +81,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 origins = [
-    "http://localhost",  # Allows requests from http://localhost (your frontend in development)
-    "http://localhost:8080",
+    "http://localhost",  # Allows requests http://localhost
+    "http://localhost:8080", # Allow request  from port 8080 as this is the port when running outside of Docker
     'justforjan.eu'
 ]
 
