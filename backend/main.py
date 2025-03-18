@@ -83,8 +83,8 @@ app = FastAPI(lifespan=lifespan)
 origins = [
     "http://localhost",  # Allows requests http://localhost
     "http://localhost:8080", # Allow request  from port 8080 as this is the port when running outside of Docker
-    'https://justforjan.eu/',
-    'https://api.justforjan.eu/',
+    'https://justforjan.eu',
+    'https://api.justforjan.eu',
 ]
 
 app.add_middleware(
