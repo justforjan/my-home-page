@@ -15,12 +15,12 @@ function Project({ project }: { project: ProjectType }) {
                 </div>
                 <div className="p-3">
                     <h2 className="text-2xl font-semibold">{project.title}</h2>
-                    <p className="mt-2">{project.description.substring(0, length_of_description)}{project.description.length > length_of_description ? '...' : ''}</p>
-                    {/*<div className="flex mt-4">*/}
-                    {/*    {project.links.map((link) => (*/}
-                    {/*        <a className="link-button" target="_blank" rel="noopener noreferrer" href={link.url}>{link.name}</a>*/}
-                    {/*    ))}*/}
-                    {/*</div>*/}
+                    {project.description ? <p className="mt-2">{project.description.substring(0, length_of_description)}{project.description.length > length_of_description ? '...' : ''}</p> : <></>}
+                    {project.links ? <div className="flex mt-4">
+                        {project.links.map((link) => (
+                            <a className="link-button" target="_blank" rel="noopener noreferrer" href={link.url}>{link.name}</a>
+                        ))}
+                    </div> : <></>}
                 </div>
             </div>
         </Link>
