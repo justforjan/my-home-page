@@ -118,7 +118,7 @@ jobs:
             echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> $file
             echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> $file
             cd ..
-            docker compose down -v
+            docker compose down
             docker compose pull
             docker compose up -d --remove-orphans
             exit
