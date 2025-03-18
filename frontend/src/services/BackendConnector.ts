@@ -4,14 +4,14 @@ import {jobs} from "../data/jobs.ts";
 import {projects} from "../data/projects.ts";
 import {educations} from "../data/education.ts";
 
-const API_BASE_URL = "api.justforjan.eu"
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 const JOBS = "jobs"
 // const PROJECTS = "projects"
 
 class ApiService {
     async getAllJobs(){
         console.log("fetching jobs")
-        fetch(`http://${API_BASE_URL}/${JOBS}`).then(res => res.json()).then(res => console.log(res));
+        fetch(`${API_BASE_URL}/${JOBS}`).then(res => res.json()).then(res => console.log(res));
     }
 }
 
