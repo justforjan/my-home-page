@@ -10,7 +10,7 @@ api.justforjan.eu {
     }
 
     handle_path /minio {
-        reverse_proxy mini0:9001
+        reverse_proxy minio:9001
     }
 
     reverse_proxy backend:8000
