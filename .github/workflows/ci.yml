@@ -96,7 +96,7 @@ jobs:
             mkdir -p ${{ secrets.WORK_DIR }}
             exit
           EOF
-          
+
 
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -111,12 +111,15 @@ jobs:
             cd ${{ secrets.WORK_DIR }}
             mkdir -p backend
             cd backend
+            rm .env
             file=".env"
             echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> $file
             echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> $file
             echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> $file
             echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> $file
             echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> $file
+            echo "MINIO_ROOT_USER=${{ secrets.MINIO_ROOT_USER }}" >> $file
+            echo "MINIO_ROOT_PASSWORD=${{ secrets.MINIO_ROOT_PASSWORD }}" >> $file
             cd ..
             docker compose down
             docker compose pull

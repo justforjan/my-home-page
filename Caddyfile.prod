@@ -5,10 +5,8 @@ justforjan.eu {
 }
 
 api.justforjan.eu {
-    handle_path /images/* {
-        reverse_proxy minio:9000 {
-            uri {path}  # Ensures the full path is forwarded
-        }
+    handle /images/* {
+        reverse_proxy minio:9000
     }
     reverse_proxy backend:8000
 }
