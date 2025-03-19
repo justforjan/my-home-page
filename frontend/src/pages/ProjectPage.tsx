@@ -2,6 +2,7 @@ import {useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {Project as ProjectType} from "../models/models.ts";
 import api from "../services/ApiService.ts";
+import {imagePathFromImageName} from "../utils/helper.ts";
 
 export default function ProjectPage() {
 
@@ -29,7 +30,7 @@ export default function ProjectPage() {
             <>
                 <h1 className="subtitle">{project.title}</h1>
                 <p className="mb-2">{formattedDate}</p>
-                {project.image ? <img alt={"This is a screenshot of my project " + project.title} src={project.image} /> : <></>}
+                {project.image ? <img alt={"This is a screenshot of my project " + project.title} src={imagePathFromImageName(project.image)} /> : <></>}
                 <p className="mb-3">{project.description}</p>
                 {project.tools ?
                     <div>
