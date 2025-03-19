@@ -1,6 +1,7 @@
 import project_default from "../assets/project_default.jpg"
 import { Project as ProjectType } from "../models/models.ts";
 import {Link} from "react-router";
+import {imagePathFromImageName} from "../utils/helper.ts";
 
 
 function Project({ project }: { project: ProjectType }) {
@@ -11,7 +12,7 @@ function Project({ project }: { project: ProjectType }) {
         <Link to={"project/" + project.id} className="text-black">
             <div className="shadow-lg border rounded-lg overflow-hidden hover:shadow">
                 <div className="aspect-[16/9] w-full object-cover">
-                    <img alt="image for project" className="w-full h-full" src={project.image ? project.image : project_default}></img>
+                    <img alt="image for project" className="w-full h-full" src={project.image ? imagePathFromImageName(project.image) : project_default}></img>
                 </div>
                 <div className="p-3">
                     <h2 className="text-2xl font-semibold">{project.title}</h2>
