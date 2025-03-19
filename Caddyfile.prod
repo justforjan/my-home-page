@@ -8,5 +8,10 @@ api.justforjan.eu {
     handle /images/* {
         reverse_proxy minio:9000
     }
+
+    handle_path/minio {
+        reverse_proxy mini0:9001
+    }
+
     reverse_proxy backend:8000
 }
