@@ -7,6 +7,7 @@ import LifeStations from "../components/LifeStations.tsx";
 import Projects from "../components/Projects.tsx";
 
 export default function MainPage() {
+
     const [jobs, setJobs] = useState<LifeStationType[]>([]);
     const [education, setEducation] = useState<LifeStationType[]>([]);
 
