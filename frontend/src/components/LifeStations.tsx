@@ -7,10 +7,10 @@ export default function LifeStations({title, life_stations}: {title: string, lif
             <h2 className="subtitle">{title}</h2>
 
             {life_stations.map(job =>
-                <>
-                    <Job job={job}/>
+                <div key={job.id}>
+                    <Job  job={job}/>
                     <hr className="border-indigo-50"/>
-                </>
+                </div>
             )}
         </>
     )

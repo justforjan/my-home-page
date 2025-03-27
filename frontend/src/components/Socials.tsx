@@ -7,7 +7,7 @@ export default function Socials() {
         <>
             <div className="flex justify-center gap-4 items-center py-2">
                 {socials.map((social) => (
-                    <Social name={social.name} url={social.url} image={social.image}/>
+                    <Social key={social.name} name={social.name} url={social.url} image={social.image}/>
                 ))}
             </div>
         </>

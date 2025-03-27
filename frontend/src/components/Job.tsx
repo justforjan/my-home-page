@@ -15,7 +15,7 @@ function Job({job}: { job: JobType }) {
                 <p className="">{job.link ? <a target="_blank" rel="noopener noreferrer" href={job.link}>@ {job.at}</a> : `@ ${job.at}`}</p>
                 <p className="text-justify mb-1">{job.description ?? job.description}</p>
                 {job.skills ? <div className="flex flex-wrap my-2">
-                    { job.skills.map(skill => <div className="skill">{skill}</div>)}
+                    { job.skills.map(skill => <div key={skill} className="skill">{skill}</div>)}
                 </div> : <></>}
             </div>
         </div>
