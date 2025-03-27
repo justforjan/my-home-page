@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-    p {
+    p, li {
         @apply text-gray-500;
     }
     a {
         @apply text-secondary;
+    }
+    li {
+        @apply list-disc list-outside ml-5
     }
 }
 
