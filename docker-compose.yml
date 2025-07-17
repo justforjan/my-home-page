@@ -7,9 +7,6 @@ services:
     volumes:
       - caddy-config:/config
       - caddy-data:/data
-    environment:
-      API_BASE_URL: https:\\api.justforjan.eu
-      RUNNING_IN_DOCKER: True
 
   backend:
     image: ghcr.io/justforjan/my-home-page_backend
