@@ -22,3 +22,7 @@ database-dumps
 psd
 thumb
 sketch
+
+# Project specific
+
+/backend/.env
